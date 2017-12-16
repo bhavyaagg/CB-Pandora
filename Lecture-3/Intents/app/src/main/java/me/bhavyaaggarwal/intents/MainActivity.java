@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
                 int b = Integer.valueOf(etVar2.getText().toString());
                 int c = a + b;
                 Intent i = new Intent(MainActivity.this, ResultActivity.class);
+                i.putExtra("Result", c);
                 startActivity(i);
             }
         });
