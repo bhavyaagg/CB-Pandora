@@ -32,5 +32,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(emailIntent);
             }
         });
+
+        btnSendNumber.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent dialerIntent = new Intent(Intent.ACTION_DIAL);
+                dialerIntent.setData(Uri.parse("tel:" + etNumber.getText().toString()));
+                startActivity(dialerIntent);
+            }
+        });
     }
 }
