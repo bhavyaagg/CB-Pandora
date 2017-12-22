@@ -1,5 +1,6 @@
 package me.bhavyaaggarwal.assignment_listviews;
 
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,6 +12,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -70,10 +72,11 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public View getView(final int position, View convertView, ViewGroup parent) {
             LayoutInflater li = getLayoutInflater();
-            View itemView = li.inflate(R.layout.list_item_todo_details, parent, false);
+            final View itemView = li.inflate(R.layout.list_item_todo_details, parent, false);
 
-            TextView tvTask = itemView.findViewById(R.id.tvTask);
+            final TextView tvTask = itemView.findViewById(R.id.tvTask);
             CheckBox cbDone = itemView.findViewById(R.id.cbDone);
+            ImageView ivDelete = itemView.findViewById(R.id.ivDelete);
 
             cbDone.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
@@ -83,8 +86,17 @@ public class MainActivity extends AppCompatActivity {
                     todo.setDone(isChecked);
                     todos.set(position, todo);
 
+                    itemView.setBackgroundColor(
+                            isChecked ? getResources().getColor(android.R.color.holo_green_dark) :
+                                    getResources().getColor(android.R.color.white));
+                }
+            });
 
-                    Log.d("STRING", "onCheckedChanged: " + todos.get(0).getDone());
+            ivDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    todos.remove(position);
+                    notifyDataSetChanged();
                 }
             });
 
