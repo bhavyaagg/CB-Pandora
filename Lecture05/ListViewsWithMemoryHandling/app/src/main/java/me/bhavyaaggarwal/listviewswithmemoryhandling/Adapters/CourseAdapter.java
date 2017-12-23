@@ -39,7 +39,7 @@ public class CourseAdapter extends BaseAdapter {
 
     @Override
     public int getItemViewType(int position) {
-        return position % 2;
+        return getItem(position).getLectures() > 15 ? 0 : 1;
     }
 
     @Override
@@ -74,7 +74,7 @@ public class CourseAdapter extends BaseAdapter {
         tvCourseName.setText(thisCourse.getName());
         tvTeacherName.setText(thisCourse.getTeacherName());
         tvOnGoing.setText(String.valueOf(thisCourse.isOnGoing()));
-        tvLectureCount.setText(String.valueOf(thisCourse.getName()));
+        tvLectureCount.setText(String.valueOf(thisCourse.getLectures()));
 
         return convertView;
     }

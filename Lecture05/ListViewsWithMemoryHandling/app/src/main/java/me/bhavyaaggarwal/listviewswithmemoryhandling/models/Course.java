@@ -53,7 +53,7 @@ public class Course {
             courses.add(new Course(
                     sampleCourses[r.nextInt(8)],
                     sampleTeachers[r.nextInt(7)],
-                    15 + r.nextInt(10),
+                    10 + r.nextInt(10),
                     r.nextBoolean()
             ));
         }
