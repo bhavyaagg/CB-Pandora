@@ -44,13 +44,15 @@ public class CourseAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        LayoutInflater li = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View itemView = li.inflate(R.layout.list_item_course_details, parent, false);
 
-        TextView tvTeacherName = itemView.findViewById(R.id.tvTeacherName);
-        TextView tvCourseName = itemView.findViewById(R.id.tvCourseName);
-        TextView tvOnGoing = itemView.findViewById(R.id.tvOnGoing);
-        TextView tvLectureCount = itemView.findViewById(R.id.tvLectureCount);
+        if (convertView == null) {
+            LayoutInflater li = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView = li.inflate(R.layout.list_item_course_details, parent, false);
+        }
+        TextView tvTeacherName = convertView.findViewById(R.id.tvTeacherName);
+        TextView tvCourseName = convertView.findViewById(R.id.tvCourseName);
+        TextView tvOnGoing = convertView.findViewById(R.id.tvOnGoing);
+        TextView tvLectureCount = convertView.findViewById(R.id.tvLectureCount);
 
         Course thisCourse = getItem(position);
 
@@ -59,7 +61,7 @@ public class CourseAdapter extends BaseAdapter {
         tvOnGoing.setText(String.valueOf(thisCourse.isOnGoing()));
         tvLectureCount.setText(String.valueOf(thisCourse.getName()));
 
-        return itemView;
+        return convertView;
     }
 
 }
