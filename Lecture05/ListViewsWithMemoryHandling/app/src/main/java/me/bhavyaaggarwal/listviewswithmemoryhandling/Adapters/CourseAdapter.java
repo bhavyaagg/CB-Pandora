@@ -47,7 +47,12 @@ public class CourseAdapter extends BaseAdapter {
 
         if (convertView == null) {
             LayoutInflater li = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = li.inflate(R.layout.list_item_course_details, parent, false);
+
+            if (position % 2 == 0) {
+                convertView = li.inflate(R.layout.list_item_course_right, parent, false);
+            } else {
+                convertView = li.inflate(R.layout.list_item_course_left, parent, false);
+            }
         }
         TextView tvTeacherName = convertView.findViewById(R.id.tvTeacherName);
         TextView tvCourseName = convertView.findViewById(R.id.tvCourseName);

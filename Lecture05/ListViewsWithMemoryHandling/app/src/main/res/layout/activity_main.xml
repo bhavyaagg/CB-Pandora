@@ -10,5 +10,5 @@
         android:id="@+id/lvCourseDetails"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/list_item_course_details"></ListView>
+        tools:listitem="@layout/list_item_course_left"></ListView>
 </FrameLayout>
