@@ -28,7 +28,8 @@
     <ListView
         android:id="@+id/lvTodos"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/list_item_todo_details">
 
     </ListView>
 </LinearLayout>
