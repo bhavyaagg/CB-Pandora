@@ -38,6 +38,16 @@ public class CourseAdapter extends BaseAdapter {
     }
 
     @Override
+    public int getItemViewType(int position) {
+        return position % 2;
+    }
+
+    @Override
+    public int getViewTypeCount() {
+        return 2;
+    }
+
+    @Override
     public long getItemId(int position) {
         return 0;
     }
@@ -48,7 +58,7 @@ public class CourseAdapter extends BaseAdapter {
         if (convertView == null) {
             LayoutInflater li = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-            if (position % 2 == 0) {
+            if (getItemViewType(position) == 0) {
                 convertView = li.inflate(R.layout.list_item_course_right, parent, false);
             } else {
                 convertView = li.inflate(R.layout.list_item_course_left, parent, false);
