@@ -27,5 +27,19 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/btnStartService"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Start Service" />
+
+        <Button
+            android:id="@+id/btnStopService"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Stop Service" />
     </LinearLayout>
+
+
 </FrameLayout>
