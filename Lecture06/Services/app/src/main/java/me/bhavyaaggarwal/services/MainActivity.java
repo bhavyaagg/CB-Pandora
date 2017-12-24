@@ -1,5 +1,6 @@
 package me.bhavyaaggarwal.services;
 
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -18,18 +19,19 @@ public class MainActivity extends AppCompatActivity {
         btnClick = findViewById(R.id.btnClick);
         tvResult = findViewById(R.id.tvResult);
 
-
+        final Handler h = new Handler();
         btnClick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tvResult.setText("");
-                long x = System.currentTimeMillis();
-                while (true) {
-                    if (System.currentTimeMillis() - x >= 2000) {
-                        break;
+
+                Runnable r = new Runnable() {
+                    @Override
+                    public void run() {
+                        tvResult.setText("Hello");
                     }
-                }
-                tvResult.setText("Hello");
+                };
+                tvResult.setText("");
+                h.postDelayed(r, 2000);
             }
         });
 
