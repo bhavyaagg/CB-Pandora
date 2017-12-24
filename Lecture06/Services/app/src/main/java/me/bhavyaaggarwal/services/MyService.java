@@ -22,6 +22,9 @@ public class MyService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.d(TAG, "onStartCommand: ");
         Log.d(TAG, "intent: " + intent);
+        long start = System.currentTimeMillis();
+        while (System.currentTimeMillis() < start + 10000);
+        Log.d(TAG, "onStartCommand: wait finished");
         return super.onStartCommand(intent, flags, startId);
     }
 
