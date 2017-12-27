@@ -54,7 +54,6 @@ public class TodoRecyclerAdapter extends RecyclerView.Adapter<TodoRecyclerAdapte
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 todos.get(position).setDone(isChecked);
-                notifyDataSetChanged();
                 Log.d(TAG, "onCheckedChanged: " + todos.get(position).isDone());
             }
         });
