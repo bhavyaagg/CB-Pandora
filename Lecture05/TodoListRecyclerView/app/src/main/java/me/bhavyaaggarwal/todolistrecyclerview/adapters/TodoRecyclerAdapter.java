@@ -2,10 +2,12 @@ package me.bhavyaaggarwal.todolistrecyclerview.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,6 +23,8 @@ import me.bhavyaaggarwal.todolistrecyclerview.models.Todo;
 public class TodoRecyclerAdapter extends RecyclerView.Adapter<TodoRecyclerAdapter.TodoViewHolder> {
     private Context context;
     private ArrayList<Todo> todos;
+
+    public static final String TAG = "Todo";
 
     public TodoRecyclerAdapter(Context context) {
         this.context = context;
@@ -46,7 +50,14 @@ public class TodoRecyclerAdapter extends RecyclerView.Adapter<TodoRecyclerAdapte
 
         holder.tvTask.setText(todo.getTask());
         holder.cbDone.setChecked(todo.isDone());
-
+        holder.cbDone.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                todos.get(position).setDone(isChecked);
+                notifyDataSetChanged();
+                Log.d(TAG, "onCheckedChanged: " + todos.get(position).isDone());
+            }
+        });
         holder.ivDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
