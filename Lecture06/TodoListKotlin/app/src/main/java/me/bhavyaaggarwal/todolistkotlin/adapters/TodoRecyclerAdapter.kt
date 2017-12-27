@@ -13,10 +13,16 @@ import me.bhavyaaggarwal.todolistkotlin.models.Todo
 /**
  * Created by bhavyaaggarwal on 27/12/17.
  */
-class TodoRecyclerAdapter(val context: Context, val todos: ArrayList<Todo>) :
+class TodoRecyclerAdapter(val context: Context, val todos: ArrayList<Todo> = ArrayList()) :
         RecyclerView.Adapter<TodoRecyclerAdapter.TodoViewHolder>() {
+
     override fun getItemCount(): Int {
         return todos.size;
+    }
+
+    fun addTodo(todo: Todo) {
+        todos.add(todo)
+        notifyDataSetChanged()
     }
 
     override fun onBindViewHolder(holder: TodoViewHolder?, position: Int) {
@@ -28,7 +34,6 @@ class TodoRecyclerAdapter(val context: Context, val todos: ArrayList<Todo>) :
             todos.removeAt(position)
             notifyDataSetChanged()
         })
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): TodoViewHolder {
