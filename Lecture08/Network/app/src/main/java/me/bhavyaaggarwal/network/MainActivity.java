@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 int countUpto = Integer.valueOf(etCount.getText().toString());
-                MyAsyncTask task = new MyAsyncTask();
+                me.bhavyaaggarwal.network.MyAsyncTask task = new me.bhavyaaggarwal.network.MyAsyncTask(tvResult);
                 task.execute(countUpto);
             }
         });
