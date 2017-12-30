@@ -14,11 +14,11 @@
         android:paddingHorizontal="20dp">
 
         <EditText
-            android:id="@+id/etUrl"
+            android:id="@+id/etCount"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:hint="Enter URL" />
+            android:hint="Enter Count" />
 
         <Button
             android:id="@+id/btnSend"
