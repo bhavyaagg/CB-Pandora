@@ -4,6 +4,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import java.util.ArrayList;
+
 import me.bhavyaaggarwal.retrofitgson.models.Post;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -39,6 +41,20 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Post> call, Throwable t) {
+
+            }
+        });
+
+        api.getPosts().enqueue(new Callback<ArrayList<Post>>() {
+            @Override
+            public void onResponse(Call<ArrayList<Post>> call, Response<ArrayList<Post>> response) {
+                for (Post p : response.body()) {
+                    Log.d(TAG, "onResponse: " + p.getTitle());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<Post>> call, Throwable t) {
 
             }
         });
