@@ -10,9 +10,8 @@ fun sayHello2(getFirstName: () -> String, getLastName: () -> String) {
 fun main(args: Array<String>) {
     // In Anonymous Functions, last line is returned automatically
     sayHello({ i ->
-        "Bhavya " + i
+        "Bhavya $i"
     })
-
 
     // Lambda Functions
     sayHello2({ "Bhavya" }, { "Aggarwal" })
