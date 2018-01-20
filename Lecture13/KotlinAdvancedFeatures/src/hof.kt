@@ -1,9 +1,9 @@
-fun sayHello(getName: () -> String) {
-    println("Hello " + getName())
+fun sayHello(getName: (Int) -> String) {
+    println("Hello " + getName(10))
 }
 
 fun main(args: Array<String>) {
-    sayHello({
-        -> "Bhavya"
+    sayHello({ i ->
+        "Bhavya " + i
     })
 }
