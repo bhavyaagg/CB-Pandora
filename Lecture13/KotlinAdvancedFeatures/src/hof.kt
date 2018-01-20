@@ -1,5 +1,5 @@
-fun sayHello(getName: (Int) -> String) {
-    println("Hello " + getName(10))
+fun sayHello(getName: (String) -> String) {
+    println("Hello " + getName("Bhavya"))
 }
 
 fun sayHello2(getFirstName: () -> String, getLastName: () -> String) {
@@ -15,5 +15,9 @@ fun main(args: Array<String>) {
 
     // Lambda Functions
     sayHello2({ "Bhavya" }, { "Aggarwal" })
+
+    // Use it when we want to access the first argument. Not possible if more that one
+    // argument
+    sayHello({it})
 
 }
