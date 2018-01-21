@@ -26,7 +26,9 @@ class MainActivity : AppCompatActivity() {
 
         btnLeft.setOnClickListener(clickEvent)
 
-        btnRight.setOnClickListener(clickEvent)
+        btnRight.setOnClickListener({
+            throw Exception("Check Firebase")
+        })
 
     }
 }
