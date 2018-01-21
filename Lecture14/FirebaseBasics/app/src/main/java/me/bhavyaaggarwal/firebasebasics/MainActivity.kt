@@ -16,13 +16,12 @@ class MainActivity : AppCompatActivity() {
         val firebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         val clickEvent: (View) -> Unit = {
-            with(Bundle()) {
-                putString("button", (it as Button).text.toString())
-                firebaseAnalytics.logEvent(
-                        "click",
-                        this
-                )
-            }
+            firebaseAnalytics.logEvent(
+                    "click",
+                    Bundle().apply {
+                        putString("button", (it as Button).text.toString())
+                    }
+            )
         }
 
         btnLeft.setOnClickListener(clickEvent)
