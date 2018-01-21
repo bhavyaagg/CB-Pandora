@@ -13,23 +13,21 @@ class MainActivity : AppCompatActivity() {
 
         val firebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
-        val leftClickBundle = Bundle()
-        leftClickBundle.putString(FirebaseAnalytics.Param.ITEM_ID, "left")
-
-        val rightClickBundle = Bundle()
-        rightClickBundle.putString(FirebaseAnalytics.Param.ITEM_ID, "right")
-
         btnLeft.setOnClickListener({
+            val clickBundle = Bundle()
+            clickBundle.putString("button", "left")
             firebaseAnalytics.logEvent(
-                    FirebaseAnalytics.Event.SELECT_CONTENT,
-                    leftClickBundle
+                    "click",
+                    clickBundle
             )
         })
 
         btnRight.setOnClickListener({
+            val clickBundle = Bundle()
+            clickBundle.putString("button", "right")
             firebaseAnalytics.logEvent(
-                    FirebaseAnalytics.Event.SELECT_CONTENT,
-                    rightClickBundle
+                    "click",
+                    clickBundle
             )
         })
 
