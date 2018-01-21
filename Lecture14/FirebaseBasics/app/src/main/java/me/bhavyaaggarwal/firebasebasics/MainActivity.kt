@@ -2,6 +2,8 @@ package me.bhavyaaggarwal.firebasebasics
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.Button
 import com.google.firebase.analytics.FirebaseAnalytics
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -13,23 +15,18 @@ class MainActivity : AppCompatActivity() {
 
         val firebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
-        btnLeft.setOnClickListener({
+        val clickEvent: (View) -> Unit = {
             val clickBundle = Bundle()
-            clickBundle.putString("button", "left")
+            clickBundle.putString("button", (it as Button).text.toString())
             firebaseAnalytics.logEvent(
                     "click",
                     clickBundle
             )
-        })
+        }
 
-        btnRight.setOnClickListener({
-            val clickBundle = Bundle()
-            clickBundle.putString("button", "right")
-            firebaseAnalytics.logEvent(
-                    "click",
-                    clickBundle
-            )
-        })
+        btnLeft.setOnClickListener(clickEvent)
+
+        btnRight.setOnClickListener(clickEvent)
 
     }
 }
