@@ -6,13 +6,12 @@
     android:layout_height="match_parent"
     tools:context="me.bhavyaaggarwal.fragments.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <!-- Ids are must for static fragments -->
+    <fragment
+        android:id="@+id/fragOne"
+        android:name="me.bhavyaaggarwal.fragments.BlankFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout="@layout/fragment_blank" />
 
 </android.support.constraint.ConstraintLayout>
