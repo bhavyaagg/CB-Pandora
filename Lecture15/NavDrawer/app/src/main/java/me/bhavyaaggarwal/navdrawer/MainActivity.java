@@ -3,6 +3,8 @@ package me.bhavyaaggarwal.navdrawer;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -16,12 +18,16 @@ import android.view.MenuItem;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    FragmentManager fragmentManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        fragmentManager = getSupportFragmentManager();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -78,21 +84,29 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
-        int id = item.getItemId();
-
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        FragmentTransaction fragTxn = fragmentManager.beginTransaction();
+        switch (item.getItemId()) {
+            case R.id.nav_manage:
+                fragTxn.replace(
+                        R.id.flFragContainer,
+                        IconFragment.newInstance(R.drawable.ic_menu_manage)
+                );
+                break;
+            case R.id.nav_gallery:
+                fragTxn.replace(
+                        R.id.flFragContainer,
+                        IconFragment.newInstance(R.drawable.ic_menu_gallery)
+                );
+                break;
+            case R.id.nav_camera:
+            default:
+                fragTxn.replace(
+                        R.id.flFragContainer,
+                        IconFragment.newInstance(R.drawable.ic_menu_camera)
+                );
+                break;
         }
+        fragTxn.commit();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
