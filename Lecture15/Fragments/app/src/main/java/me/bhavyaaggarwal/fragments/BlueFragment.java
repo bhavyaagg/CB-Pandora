@@ -19,7 +19,7 @@ public class BlueFragment extends Fragment {
             LayoutInflater inflater,
             @Nullable ViewGroup container,
             @Nullable Bundle savedInstanceState) {
-        View rootview = inflater.inflate(R.layout.fragment_blank, container);
+        View rootview = inflater.inflate(R.layout.fragment_blank, null);
         rootview.findViewById(R.id.flBackground).setBackgroundColor(Color.BLUE);
         return rootview;
     }
