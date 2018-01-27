@@ -1,17 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="me.bhavyaaggarwal.fragments.MainActivity">
 
     <!-- Ids are must for static fragments -->
     <fragment
-        android:id="@+id/fragOne"
-        android:name="me.bhavyaaggarwal.fragments.BlankFragment"
+        android:id="@+id/fragRed"
+        android:name="me.bhavyaaggarwal.fragments.RedFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         tools:layout="@layout/fragment_blank" />
 
-</android.support.constraint.ConstraintLayout>
+    <fragment
+        android:id="@+id/fragBlue"
+        android:name="me.bhavyaaggarwal.fragments.BlueFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        tools:layout="@layout/fragment_blank" />
+
+</LinearLayout>
